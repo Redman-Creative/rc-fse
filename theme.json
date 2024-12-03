@@ -1,0 +1,47 @@
+{
+    "version": 2,
+    "settings": {
+        "color": {
+            "defaultPalette": false,
+            "palette": [
+                {
+                "name": "Primary",
+                "slug": "primary",
+                "color": "#0073aa"
+                },
+                {
+                "name": "Secondary",
+                "slug": "secondary",
+                "color": "#005177"
+                },
+                {
+                "name": "Accent",
+                "slug": "accent",
+                "color": "#f78da7"
+                },
+                {
+                "name": "Black",
+                "slug": "black",
+                "color": "#000000"
+                },
+                {
+                "name": "White",
+                "slug": "white",
+                "color": "#ffffff"
+                }
+            ],
+            "custom": false
+        },
+        "border": {
+            "radius": true
+        },
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "layout": {
+            "contentSize": "840px",
+            "wideSize": "1100px"
+        }
+    }
+}
