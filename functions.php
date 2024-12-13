@@ -16,9 +16,6 @@ function automatic_GitHub_updates($data) {
     if (!preg_match('/^[a-zA-Z0-9_-]+$/', $user) || !preg_match('/^[a-zA-Z0-9_-]+$/', $repo)) {
         return $data;
     }
-
-    // Clear the cache for testing purposes
-    delete_transient('github_update_' . get_stylesheet());
     
     // Check for cached response
     $transient_key = 'github_update_' . $theme;
@@ -45,11 +42,12 @@ function automatic_GitHub_updates($data) {
 
     $file = json_decode($response);
     if ($file && isset($file->tag_name)) {
-        $update = filter_var($file->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        
+        $update = ltrim($file->tag_name, 'v'); // Remove the 'v' prefix if it exists
 
         // Only return a response if the new version number is higher
         if (version_compare($update, $current, '>')) {
-            $package_url = $file->zipball_url; // Use zipball_url for the package download URL
+            $package_url = $file->zipball_url;
             $data->response[$theme] = [
                 'theme'       => $theme,
                 'new_version' => $update,
