@@ -46,16 +46,15 @@ function automatic_GitHub_updates($data) {
 
         // Only return a response if the new version number is higher
         if (version_compare($update, $current, '>')) {
-            if (isset($file->assets[0]->browser_download_url)) {
-                $data->response[$theme] = [
-                    'theme'       => $theme,
-                    'new_version' => $update,
-                    'url'         => $file->html_url,
-                    'package'     => $file->assets[0]->browser_download_url,
-                ];
-                // Cache the response for 12 hours
-                // set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
-            }
+            $package_url = $file->zipball_url; // Use zipball_url for the package download URL
+            $data->response[$theme] = [
+                'theme'       => $theme,
+                'new_version' => $update,
+                'url'         => $file->html_url,
+                'package'     => $package_url,
+            ];
+            // Cache the response for 12 hours
+            // set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
         }
     }
 
