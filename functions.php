@@ -17,6 +17,9 @@ function automatic_GitHub_updates($data) {
         return $data;
     }
 
+    // Clear the cache for testing purposes
+    delete_transient('github_update_' . get_stylesheet());
+    
     // Check for cached response
     $transient_key = 'github_update_' . $theme;
     $cached_response = get_transient($transient_key);
@@ -54,7 +57,7 @@ function automatic_GitHub_updates($data) {
                 'package'     => $package_url,
             ];
             // Cache the response for 12 hours
-            // set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
+            set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
         }
     }
 
