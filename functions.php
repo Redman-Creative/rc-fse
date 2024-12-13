@@ -9,7 +9,7 @@ function automatic_GitHub_updates($data) {
     $current = wp_get_theme()->get('Version'); // Get the version of the current theme
 
     // GitHub information
-    $user = 'jdredman'; // The GitHub username hosting the repository
+    $user = 'redman-creative'; // The GitHub username hosting the repository
     $repo = 'rc-fse'; // Repository name
 
     // Validate GitHub information
